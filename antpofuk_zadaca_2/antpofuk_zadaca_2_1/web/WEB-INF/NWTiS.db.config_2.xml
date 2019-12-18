@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>NWTIS konfiguracija - JavaDB</comment>
+<entry key="server.database">jdbc:derby://localhost:1527/</entry>
+<entry key="admin.username">nwtis_g4</entry>
+<entry key="admin.password">g4_nwtis</entry>
+<entry key="admin.database">nwtis_g4</entry>
+<entry key="user.username">nwtis_g4</entry>
+<entry key="user.password">g4_nwtis</entry>
+<entry key="user.database">nwtis_g4</entry>
+<entry key="jdbc.derby">org.apache.derby.jdbc.ClientDriver</entry>
+<entry key="apikey">16781da1848f4695002a9af010fedaf8</entry>
+<entry key="token">cefce19085b497</entry>
+<entry key="username">AntonijaPofuk</entry>
+<entry key="password">xxxyyy712</entry>
+<entry key="ciklus">60</entry>
+<entry key="trajanje">6</entry>
+<entry key="pocetak">48</entry>
+<entry key="tablicaBrojRedaka">10</entry>
+<entry key="izbornikBrojRedaka">20</entry>
+</properties>

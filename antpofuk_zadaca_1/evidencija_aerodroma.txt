@@ -1,0 +1,2 @@
+Aerodrom{icao=icao1, iata=iata1, naziv=a1, grad=Varazdin, drzava=HR, geoSirina=5.741003, geoDuzina=16.0804}
+Aerodrom{icao=icao, iata=iata, naziv=a1, grad=Varazdin, drzava=HR, geoSirina=5.741003, geoDuzina=16.0804}

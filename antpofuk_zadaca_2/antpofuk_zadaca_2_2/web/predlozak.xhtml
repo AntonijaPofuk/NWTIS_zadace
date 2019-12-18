@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{obradaAerodroma.jezik}" >
+        <h:head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <title><ui:insert name="naslov">Antonija Pofuk - Zadaca 2-2.dio</ui:insert></title>
+            <style> .error {color:red} </style>
+        </h:head>
+
+        <h:body>
+
+            <div id="top">
+                <ui:insert name="top">Top</ui:insert>
+            </div>
+
+            <div id="content" class="center_content">
+                <ui:insert name="content">Content</ui:insert>
+            </div>
+
+            <div id="bottom">
+                <ui:insert name="bottom">Antonija Pofuk &copy; 2019</ui:insert>
+            </div>
+
+        </h:body>
+    </f:view>
+</html>

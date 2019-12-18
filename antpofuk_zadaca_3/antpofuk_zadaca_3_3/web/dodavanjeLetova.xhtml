@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Zadaca 3</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputScript library="js" name="pregledLetova.js"/>
+        </h:head>
+    <h:body>
+       <h:form id="forma" style="background-color: #C8C8C8">
+            <p:button value="Dodavanje letova" outcome="dodavanjeLetova?faces-redirect=true" icon="pi pi-star" style="margin-right:20px;">
+                <f:param name="dodletova" value="10" /></p:button>
+            <p:button value="Pregled letova" outcome="pregledLetova?faces-redirect=true" icon="pi pi-star" style="margin-right:20px;">
+                <f:param name="preletova" value="10" /></p:button>  
+            <h:panelGrid columns="2">
+                <h:panelGrid columns="1">
+                    <h:panelGroup>      
+                        <h:outputLabel value="Od vremena:"></h:outputLabel>
+                        <p:inputText value="#{dodavanjeLetova.odVremena}" id="odV"/>
+                    </h:panelGroup>
+                    <h:panelGroup>
+                        <h:outputLabel value="Do vremena:"></h:outputLabel>
+                        <p:inputText  value="#{dodavanjeLetova.doVremena}" id="doV"/>
+                    </h:panelGroup>
+                </h:panelGrid>
+                <h:commandButton value="Preuzeti letove" id="preuzmiLetoveBtn" action="#{dodavanjeLetova.preuzmiLetove()}">
+                    <f:ajax event="action" execute="odV doV odabraniAerodrom preuzetiPodatke" render="tablica:letovi" />
+                </h:commandButton>
+            </h:panelGrid>
+            <h:outputLabel value="Preuzeti podatke od OpenSky:"></h:outputLabel>
+            <h:selectBooleanCheckbox id ="preuzetiPodatke" value="#{dodavanjeLetova.preuzetiPodatke}" />
+            <h:panelGrid columns ="2">
+                <h:panelGroup>
+                    &nbsp;               
+                    <h:selectOneListbox id="putnici" 
+                                        value="#{dodavanjeLetova.odabraniPutnik}" style="width:15em" size="7">
+                        <f:ajax event="click" execute="ime" />
+
+                        <f:selectItems value="#{dodavanjeLetova.listaPutnika}" 
+                                       var="p" itemValue="#{p.id}"                                      
+                                       itemLabel="#{p.firstname}  #{p.lastname}">
+                        </f:selectItems>
+                    </h:selectOneListbox>                   
+                </h:panelGroup>
+                <h:panelGroup>
+                    &nbsp;  
+                    <h:selectOneListbox id="odabraniAerodrom" value="#{dodavanjeLetova.odabraniAerodrom}"
+                                        size="7" style="width:25em">
+                        <f:selectItems value="#{dodavanjeLetova.listaAerodroma}" 
+                                       var="p"  itemValue="#{p.icao}"
+                                       itemLabel="#{p.icao} ,   #{p.naziv}">
+                        </f:selectItems> 
+                        <f:ajax event="click" execute="odabraniAerodrom"/>
+                    </h:selectOneListbox>                                  
+                </h:panelGroup>
+            </h:panelGrid>
+        </h:form>
+        <h:form id="tablica">
+            <p:dataTable  id="letovi" class="table" var="a" value="#{dodavanjeLetova.listaLetova}"
+                          paginator="true" rows="10"
+                          paginatorTemplate="{CurrentPageReport} {FirstPageLink}
+                          {PreviousPageLink} {PageLinks} {NextPageLink}
+                          {LastPageLink} {RowsPerPageDropdown}" currentPageReportTemplate="UKUPNO LETOVA : {totalRecords}">
+                <p:column>
+                    #{a.icao24}
+                    <f:facet name="header">ICAO24</f:facet>
+                </p:column>
+                <p:column>
+                    #{a.callsign}
+                    <f:facet name="header">Znak</f:facet>
+                </p:column>
+                <p:column>
+                    #{a.estDepartureAirport}
+                    <f:facet name="header">Polazni</f:facet>
+                </p:column>
+                <p:column>
+                    #{a.estArrivalAirport}
+                    <f:facet name="header">Odredisni</f:facet>
+                </p:column>
+                <p:column>
+                    #{a.nazivOdredisnogAerodroma}
+                    <f:facet name="header">Aerodrom</f:facet>
+                </p:column>
+                <p:column>
+                    #{a.vrijemePoletanja}
+                    <f:facet name="header">Vrijeme polaska</f:facet>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">Akcija</f:facet>
+                    <h:commandButton value="Dodaj" >
+                        <f:ajax event="action" execute="forma:putnik" listener="#{dodavanjeLetova.dodajLet(a.id)}" render="letovi" />
+                    </h:commandButton>
+                </p:column>  
+            </p:dataTable>            
+        </h:form>
+    </h:body>
+</html>
+

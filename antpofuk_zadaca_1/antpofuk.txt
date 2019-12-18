@@ -1,0 +1,22 @@
+#Konfiguracija NWTIS grupa 4
+port=8000
+maks.cekaca=20
+maks.dretvi=10
+interval.serijalizacije=20
+interval.nadzora=45
+datoteka.aerodroma=antpofuk_aerodromi.bin
+datoteka.nadzora=antpofuk_nadzor.bin
+korisnik.mimi=admin123
+korisnik.ana=admin123
+korisnik.mama=admin123
+korisnik.tata=admin123
+korisnik.antonija=admin123
+korisnik.antonia=admin123
+korisnik.tarik=admin123
+korisnik.korisnik=lozinka
+
+
+
+
+
+

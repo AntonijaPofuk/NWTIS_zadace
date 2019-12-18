@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+       xmlns:p="http://primefaces.org/ui">
+    <h:outputScript library="js" name="pregledLetova.js"/>
+
+    <h:head>
+        <title>Zadaca 3</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body style="background-color: #C8C8C8">
+      
+        <h:form>         
+        <p:button value="Dodavanje letova" outcome="dodavanjeLetova?faces-redirect=true" icon="pi pi-star" style="margin-right:20px;">
+            <f:param name="dodletova" value="10" /></p:button>
+            <p:button value="Pregled letova" outcome="pregledLetova?faces-redirect=true" icon="pi pi-star" style="margin-right:20px;">
+            <f:param name="preletova" value="10" /></p:button>
+        </h:form>
+
+    </h:body>
+</html>
+

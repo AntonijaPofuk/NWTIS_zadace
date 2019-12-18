@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Zadaca 3</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputScript library="js" name="pregledLetova.js"/>
+    </h:head>
+    <h:body>
+        <h:form id="forma" style="background-color: #C8C8C8">
+            <p:button value="Dodavanje letova" outcome="dodavanjeLetova?faces-redirect=true" icon="pi pi-star" style="margin-right:20px;">
+                <f:param name="dodletova" value="10" /></p:button>
+            <p:button value="Pregled letova" outcome="pregledLetova?faces-redirect=true" icon="pi pi-star" style="margin-right:20px;">
+                <f:param name="preletova" value="10" /></p:button>   
+            <h:panelGrid columns="2">
+                <h:panelGrid columns="1">
+                    <h:panelGroup>      
+                        <h:outputLabel value="Od vremena:"></h:outputLabel>
+                        <h:inputText value="#{pregledLetova.odVremena}" id="odVremena"/>
+
+                    </h:panelGroup>
+                    <h:panelGroup>
+                        <h:outputLabel value="Do vremena:"></h:outputLabel>
+                        <h:inputText  value="#{pregledLetova.doVremena}" id="doVremena"/>
+
+                    </h:panelGroup>
+                </h:panelGrid>
+                <h:commandButton value="Preuzeti letove" id="preuzmiLetoveBtn" action="#{pregledLetova.preuzmiLetove()}">
+                    <f:ajax event="action" execute="odVremena doVremena odabraniPutnik" render="letovi" />
+                </h:commandButton>
+            </h:panelGrid>
+            <h:panelGrid columns ="2">
+                <h:panelGroup>
+                    &nbsp;               
+                    <h:selectOneListbox id="odabraniPutnik" 
+                                        value="#{pregledLetova.odabraniPutnik}" 
+                                        style="width:15em" size="7">
+                        <f:selectItems value="#{pregledLetova.listaPutnika}" 
+                                       var="p" itemValue="#{p.id}"                                      
+                                       itemLabel="#{p.firstname}  #{p.lastname}">
+                        </f:selectItems>
+                    </h:selectOneListbox>
+                </h:panelGroup>           
+            </h:panelGrid>    
+            <p:dataTable   id="letovi" class="table" var="l" value="#{pregledLetova.listaLetova}"
+                           paginator="true" rows="10"
+                           paginatorTemplate="{CurrentPageReport} {FirstPageLink}
+                           {PreviousPageLink} {PageLinks} {NextPageLink}
+                           {LastPageLink} {RowsPerPageDropdown}"  currentPageReportTemplate="UKUPNO LETOVA : {totalRecords}"
+                           >
+                <p:column >
+                    <f:facet name="header" > ICAO24  </f:facet>
+                        #{l.icao24}
+                </p:column>
+                <p:column >
+                    <f:facet name="header">Znak</f:facet>
+                        #{l.callsign}
+                </p:column>
+                <p:column >
+                    <f:facet name="header">Polazni</f:facet>
+                        #{l.estDepartureAirport}
+                </p:column>
+                <p:column >
+                    <f:facet name="header">Odredisni</f:facet> 
+                        #{l.estArrivalAirport}
+                </p:column>
+                <p:column >
+                    <f:facet name="header">Aerodrom</f:facet> 
+                        #{l.nazivOdredisnogAerodroma}
+                </p:column>    
+                <p:column >
+                    <f:facet name="header">Vrijeme polaska</f:facet>
+                        #{l.vrijemePoletanja}
+                </p:column>
+                <p:column >
+                    <f:facet name="header">Akcija</f:facet>
+                    <h:commandButton value="Obrisi" >
+                        <f:ajax event="action" execute="forma:odabraniPutnik" listener="#{pregledLetova.brisiLet(l.id)}" render="letovi" />
+                    </h:commandButton>
+                </p:column>                 
+            </p:dataTable>          
+        </h:form>
+        <h:panelGroup style="color: #c0a3a3;">
+                 <h:outputText id="poruka" value="#{pregledLetova.msg}" />
+        </h:panelGroup>                       
+    </h:body>
+</html>
+

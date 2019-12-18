@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <definitions 
+ xmlns="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="AIRP2WS" targetNamespace="http://serveri.ws.antpofuk.nwtis.foi.org/" xmlns:tns="http://serveri.ws.antpofuk.nwtis.foi.org/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:fi="http://java.sun.com/xml/ns/wsit/2006/09/policy/fastinfoset/service" xmlns:tcp="http://java.sun.com/xml/ns/wsit/2006/09/policy/soaptcp/service" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" 
+ >
+    <message name="dajSveAerodrome"/>
+    <message name="dajSveAerodromeResponse"/>
+    <message name="preuzmiGPSLokaciju"/>
+    <message name="preuzmiGPSLokacijuResponse"/>
+    <message name="ucitajKonfiguraciju"/>
+    <message name="ucitajKonfiguracijuResponse"/>
+    <message name="tablicaBrojRedaka"/>
+    <message name="tablicaBrojRedakaResponse"/>
+    <message name="dodajAerodrom"/>
+    <message name="dodajAerodromResponse"/>
+    <message name="provjeriAvionPoletioSAerodroma"/>
+    <message name="provjeriAvionPoletioSAerodromaResponse"/>
+    <message name="dajAvionePoletjeleSAerodroma"/>
+    <message name="dajAvionePoletjeleSAerodromaResponse"/>
+    <message name="dajAerodrom"/>
+    <message name="dajAerodromResponse"/>
+    <message name="izbornikBrojRedaka"/>
+    <message name="izbornikBrojRedakaResponse"/>
+    <portType name="AIRP2WS">
+        <operation name="dajSveAerodrome">
+            <input message="tns:dajSveAerodrome"/>
+            <output message="tns:dajSveAerodromeResponse"/>
+        </operation>
+        <operation name="preuzmiGPSLokaciju">
+            <input message="tns:preuzmiGPSLokaciju"/>
+            <output message="tns:preuzmiGPSLokacijuResponse"/>
+        </operation>
+        <operation name="ucitajKonfiguraciju">
+            <input message="tns:ucitajKonfiguraciju"/>
+            <output message="tns:ucitajKonfiguracijuResponse"/>
+        </operation>
+        <operation name="tablicaBrojRedaka">
+            <input message="tns:tablicaBrojRedaka"/>
+            <output message="tns:tablicaBrojRedakaResponse"/>
+        </operation>
+        <operation name="dodajAerodrom">
+            <input message="tns:dodajAerodrom"/>
+            <output message="tns:dodajAerodromResponse"/>
+        </operation>
+        <operation name="provjeriAvionPoletioSAerodroma">
+            <input message="tns:provjeriAvionPoletioSAerodroma"/>
+            <output message="tns:provjeriAvionPoletioSAerodromaResponse"/>
+        </operation>
+        <operation name="dajAvionePoletjeleSAerodroma">
+            <input message="tns:dajAvionePoletjeleSAerodroma"/>
+            <output message="tns:dajAvionePoletjeleSAerodromaResponse"/>
+        </operation>
+        <operation name="dajAerodrom">
+            <input message="tns:dajAerodrom"/>
+            <output message="tns:dajAerodromResponse"/>
+        </operation>
+        <operation name="izbornikBrojRedaka">
+            <input message="tns:izbornikBrojRedaka"/>
+            <output message="tns:izbornikBrojRedakaResponse"/>
+        </operation>
+    </portType>
+    <binding name="AIRP2WSPortBinding" type="tns:AIRP2WS">
+        <wsp:PolicyReference URI="#AIRP2WSPortBindingPolicy"/>
+        <operation name="dajSveAerodrome">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="preuzmiGPSLokaciju">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="ucitajKonfiguraciju">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="tablicaBrojRedaka">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="dodajAerodrom">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="provjeriAvionPoletioSAerodroma">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="dajAvionePoletjeleSAerodroma">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="dajAerodrom">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="izbornikBrojRedaka">
+            <input/>
+            <output/>
+        </operation>
+    </binding>
+    <service name="AIRP2WS">
+        <port name="AIRP2WSPort" binding="tns:AIRP2WSPortBinding"/>
+    </service>
+    <wsp:Policy wsu:Id="AIRP2WSPortBindingPolicy">
+        <wsp:ExactlyOne>
+            <wsp:All/>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="AIRP2WSPortBinding_dodajAerodrom_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                    <sp:Body/>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                    <sp:Body/>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="AIRP2WSPortBinding_dodajAerodrom_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                    <sp:Body/>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                    <sp:Body/>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="AIRP2WSPortBinding_dajAvioneSAerodroma_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="AIRP2WSPortBinding_dajAvioneSAerodroma_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="AIRP2WSPortBinding_dajAerodrom_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="AIRP2WSPortBinding_dajAerodrom_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="AIRP2WSPortBinding_tablicaBrojRedaka_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="AIRP2WSPortBinding_tablicaBrojRedaka_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="AIRP2WSPortBinding_provjeriAvionPoletioSAerodroma_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="AIRP2WSPortBinding_provjeriAvionPoletioSAerodroma_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="AIRP2WSPortBinding_izbornikBrojRedaka_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="AIRP2WSPortBinding_izbornikBrojRedaka_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+</definitions>
